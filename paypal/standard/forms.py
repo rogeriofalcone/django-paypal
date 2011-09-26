@@ -100,14 +100,14 @@ class PayPalPaymentsForm(forms.Form):
         self.button_type = button_type
 
     def render(self):
-        return mark_safe(u"""<form action="%s" method="post">
+        return mark_safe(u"""<form action="%s" method="post" id="paypal_standard_checkout">
     %s
     <input type="image" src="%s" border="0" name="submit" alt="Buy it Now" />
 </form>""" % (POSTBACK_ENDPOINT, self.as_p(), self.get_image()))
         
         
     def sandbox(self):
-        return mark_safe(u"""<form action="%s" method="post">
+        return mark_safe(u"""<form action="%s" method="post" id="paypal_standard_checkout">
     %s
     <input type="image" src="%s" border="0" name="submit" alt="Buy it Now" />
 </form>""" % (SANDBOX_POSTBACK_ENDPOINT, self.as_p(), self.get_image()))
